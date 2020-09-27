@@ -19,10 +19,13 @@ use Spatie\Browsershot\Browsershot;
 Route::get('/', function () {
 
 
-  $result = Illuminate\Support\Facades\DB::select("select * from stocks where ind = ?", ['14231831499205396']);
 
-  return ($result[0]->name);
-//   $downloader = new \App\Http\Controllers\Stocks\Download\TseDownloader();
+
+
+
+
+
+   $downloader = new \App\Http\Controllers\Stocks\Download\TseDownloader();
 //   $downloader->downloadStocksPricesNow();
 
    //$stocks = $downloader->downloadAllStocks();
@@ -40,15 +43,17 @@ Route::get('/', function () {
 //  print_r($str);
 
 //
-//  $data = $downloader->downloadStockOtherDataNow('14231831499205396');
+  $data = $downloader->downloadStockOtherDataNow('14231831499205396');
+//  return $data;
+  echo $data['market_type'];
 //  print_r($data);
 
 
 
 
-  $updater = new \App\Http\Controllers\Stocks\Update\TseUpdater();
+//  $updater = new \App\Http\Controllers\Stocks\Update\TseUpdater();
 //  $updater->updateAllStocksInfo();
-//  $updater->updateAllStocksDailyInfo(['from_date'=>20200700]);
+////  $updater->updateAllStocksDailyInfo(['from_date'=>20200700]);
 //  $updater->updateTodayAllStocksClientTypes();
 //  $updater->updateTodayAllStocksDailyInfo();
 

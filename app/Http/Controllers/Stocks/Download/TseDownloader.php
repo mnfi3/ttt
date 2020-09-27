@@ -200,7 +200,7 @@ class TseDownloader {
     $this->url = Config::TSE_STOCK_ADDRESS.$ind;
     try {
       $str = $this->client->get($this->url)->getBody();
-//      $str = Browsershot::url($this->url)->bodyHtml();
+//      return $str;
 
       try {
         //find group_name;
@@ -236,6 +236,27 @@ class TseDownloader {
       }catch (\Exception $e){
         $eps = 0;
       }
+
+      try {
+        //title
+        $array = array();
+        preg_match("/Title='(.*)'/", $str, $array);
+        $value = explode(',', $array[0])[0];
+        preg_match("/Title='(.*)'/", $value, $array);
+        $title = $array[1];
+      }catch (\Exception $e){
+        $title = '';
+      }
+
+      //find market type from title
+      try{
+        $array = explode('-', $title);
+        $market_type = $array[1];
+      }catch (\Exception $e){
+        $market_type = '';
+      }
+
+
 
       try {
         //base vol
@@ -296,6 +317,8 @@ class TseDownloader {
       $data['floating_stocks'] = $floating_stocks;
       $data['month_mean_volume'] = $month_mean_volume;
       $data['eps'] = $eps;
+      $data['title'] = $title;
+      $data['market_type'] = $market_type;
       $data['group_pe'] = $group_pe;
       $data['group_name'] = $group_name;
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSomeFieldsToStocksTable extends Migration
+class AddSomeNewFieldsToStocksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,10 @@ class AddSomeFieldsToStocksTable extends Migration
     public function up()
     {
         Schema::table('stocks', function (Blueprint $table) {
-            $table->integer('parent_id')->nullable()->after('id');
-            $table->integer('stock_type_id')->nullable()->after('parent_id');
+            $table->integer('stock_market_type_id')->nullable()->after('stock_type_id');
+            $table->integer('apply_date')->nullable()->after('name');
+            $table->float('apply_price')->nullable()->after('apply_date');
+            $table->boolean('is_active')->nullable()->after('apply_price');
         });
     }
 

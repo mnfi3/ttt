@@ -10,6 +10,7 @@ use App\Setting;
 use App\Stock;
 use App\StockDailyInfo;
 use App\StockGroup;
+use App\StockMarketType;
 use Illuminate\Support\Facades\Log;
 
 class TseUpdater {
@@ -91,13 +92,20 @@ class TseUpdater {
           //find or stock group--------------------------------------------------
 
           $sg = StockGroup::where('name', 'like', '%' . $info['group_name'] . '%')->first();
-
+          $smt = StockMarketType::where('name', 'like', '%' . $info['market_type'] . '%')->first();
           if ($sg == null) {
             $sg = StockGroup::create([
               'code' => '',
               'name' => $info['group_name'],
             ]);
           }
+
+          if ($smt == null) {
+            $smt = StockMarketType::create([
+              'name' => $info['market_type'],
+            ]);
+          }
+
 
           if ($s == null) {
             $s = Stock::create([
