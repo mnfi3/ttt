@@ -65,6 +65,12 @@ class TseUpdater {
           (count($info) == 0) ? $info = $downloader->downloadStockOtherDataNow($stock['ind']) : $info = $info;
           (count($info) == 0) ? $info = $downloader->downloadStockOtherDataNow($stock['ind']) : $info = $info;
 
+
+          $smt = StockMarketType::where('name', 'like', '%' . $info['market_type'] . '%')->first();
+          (is_null($smt))? $smt_id = null : $smt_id = $smt->id;
+
+
+          $stock_daily_info->stock_market_type_id = $smt_id;
           $stock_daily_info->stock_count = $info['stock_count'];
           $stock_daily_info->base_volume = $info['base_volume'];
           $stock_daily_info->floating_stocks = $info['floating_stocks'];
@@ -93,6 +99,8 @@ class TseUpdater {
 
           $sg = StockGroup::where('name', 'like', '%' . $info['group_name'] . '%')->first();
           $smt = StockMarketType::where('name', 'like', '%' . $info['market_type'] . '%')->first();
+          (is_null($smt))? $smt_id = null : $smt_id = $smt->id;
+
           if ($sg == null) {
             $sg = StockGroup::create([
               'code' => '',
@@ -100,16 +108,13 @@ class TseUpdater {
             ]);
           }
 
-          if ($smt == null) {
-            $smt = StockMarketType::create([
-              'name' => $info['market_type'],
-            ]);
-          }
+
 
 
           if ($s == null) {
             $s = Stock::create([
               'stock_group_id' => $sg->id,
+              'stock_market_type_id' => $smt_id,
               'ind' => $stock['ind'],
               'code' => $stock['code'],
               'symbol' => $stock['symbol'],

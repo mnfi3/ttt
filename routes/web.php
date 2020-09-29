@@ -20,12 +20,24 @@ Route::get('/', function () {
 
 
 
+  $handler = new \App\Http\Controllers\Stocks\Update\TseLocalHandler();
+  $handler->handleArabicCharacters();
+  $result = $handler->handleBuyOption();
+  $result = $handler->handleSellOption();
+
+
+
+
+  die();
 
 
 
 
 
    $downloader = new \App\Http\Controllers\Stocks\Download\TseDownloader();
+//  $result = $downloader->downloadStockOtherDataNow('31898914913027754');
+//  print_r($result);
+//  die();
 //   $downloader->downloadStocksPricesNow();
 
    //$stocks = $downloader->downloadAllStocks();
@@ -43,17 +55,17 @@ Route::get('/', function () {
 //  print_r($str);
 
 //
-  $data = $downloader->downloadStockOtherDataNow('14231831499205396');
+//  $data = $downloader->downloadStockOtherDataNow('14231831499205396');
 //  return $data;
-  echo $data['market_type'];
+//  echo $data['market_type'];
 //  print_r($data);
 
 
 
 
-//  $updater = new \App\Http\Controllers\Stocks\Update\TseUpdater();
+  $updater = new \App\Http\Controllers\Stocks\Update\TseUpdater();
 //  $updater->updateAllStocksInfo();
-////  $updater->updateAllStocksDailyInfo(['from_date'=>20200700]);
+//  $updater->updateAllStocksDailyInfo(['from_date'=>20200700]);
 //  $updater->updateTodayAllStocksClientTypes();
 //  $updater->updateTodayAllStocksDailyInfo();
 

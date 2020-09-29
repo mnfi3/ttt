@@ -37,6 +37,8 @@ class TseDownloader {
         $stock = array();
         foreach ($items as $item) {
           $i++;
+          $item = str_replace('ي','ی', $item);
+          $item = str_replace('ك','ک', $item);
           switch ($i){
             case 1: $stock['ind'] = $item;break;
             case 2: $stock['code'] = $item;break;
@@ -251,7 +253,7 @@ class TseDownloader {
       //find market type from title
       try{
         $array = explode('-', $title);
-        $market_type = $array[1];
+        $market_type = $array[count($array)-1];
       }catch (\Exception $e){
         $market_type = '';
       }
@@ -322,7 +324,14 @@ class TseDownloader {
       $data['group_pe'] = $group_pe;
       $data['group_name'] = $group_name;
 
-      return $data;
+      $data2 = array();
+      foreach ($data as $key=>$value){
+        $value = str_replace('ي','ی', $value);
+        $value = str_replace('ك','ک', $value);
+        $data2[$key] = $value;
+      }
+
+      return $data2;
 
     } catch (RequestException  $e) {
       Log::error('GET request failed.error=' . $e->getMessage(). '\turl=' . $this->url);
@@ -351,6 +360,8 @@ class TseDownloader {
 
         if (count($items) < 21) continue;
         foreach ($items as $item){
+          $item = str_replace('ي','ی', $item);
+          $item = str_replace('ك','ک', $item);
           switch ($i){
             case 0: $record['ind'] = $item;break;
             case 1: $record['code'] = $item;break;
