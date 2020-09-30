@@ -49,6 +49,7 @@ class TseUpdater {
 
           $stock_daily_info = StockDailyInfo::create([
             'stock_id' => $s->id,
+            'ind' => $stock['ind'],
             'date' => Util::getTradeDate(),
             'stock_count' => $info['stock_count'],
             'base_volume' => $info['base_volume'],
@@ -178,6 +179,7 @@ class TseUpdater {
           if ($stock_daily_info == null) {
             $stock_daily_info = StockDailyInfo::create([
               'stock_id' => $stock->id,
+              'ind' => $stock->ind,
               'first' => $price['first'],
               'high' => $price['high'],
               'low' => $price['low'],
@@ -232,6 +234,7 @@ class TseUpdater {
           if ($stock_daily_info == null) {
             $stock_daily_info = StockDailyInfo::create([
               'stock_id' => $stock->id,
+              'ind' => $stock->ind,
               'api_individual_buy_count' => $record['api_individual_buy_count'],
               'api_corporate_buy_count' => $record['api_corporate_buy_count'],
               'api_individual_sell_count' => $record['api_individual_sell_count'],
@@ -304,6 +307,7 @@ class TseUpdater {
           if ($stock_daily_info == null) {
             $stock_daily_info = StockDailyInfo::create([
               'stock_id' => $stock->id,
+              'ind' => $stock->ind,
               'first' => $price['first'],
               'high' => $price['high'],
               'low' => $price['low'],
@@ -358,6 +362,7 @@ class TseUpdater {
           if ($stock_daily_info == null) {
             $stock_daily_info = StockDailyInfo::create([
               'stock_id' => $stock->id,
+              'ind' => $stock->ind,
               'api_individual_buy_count' => $record['api_individual_buy_count'],
               'api_corporate_buy_count' => $record['api_corporate_buy_count'],
               'api_individual_sell_count' => $record['api_individual_sell_count'],
@@ -419,6 +424,7 @@ class TseUpdater {
       if ($stock_daily_info == null){
         $stock_daily_info = StockDailyInfo::create([
           'stock_id' => $stock->id,
+          'ind' => $stock->ind,
           'individual_buy_count' => $record['individual_buy_count'],
           'corporate_buy_count' => $record['corporate_buy_count'],
           'individual_buy_vol' => $record['individual_buy_vol'],
@@ -468,6 +474,7 @@ class TseUpdater {
       if ($stock_daily_info == null) {
         $stock_daily_info = StockDailyInfo::create([
           'stock_id' => $stock->id,
+          'ind' => $stock->ind,
           'first' => $price['first'],
           'high' => $price['high'],
           'low' => $price['low'],
@@ -480,6 +487,7 @@ class TseUpdater {
           'last' => $price['last'],
           'change_percent' => (($price['close'] - $price['open']) / $price['open']) * 100,
           'eps' => $price['eps'],
+          'pe' => ($price['eps'] != 0)? $price['close'] / $price['eps'] : 0,
           'base_volume' => $price['base_volume'],
           'stock_count' => $price['stock_count'],
           'date' => Util::getTradeDate(),
@@ -497,6 +505,7 @@ class TseUpdater {
         $stock_daily_info->last = $price['last'];
         $stock_daily_info->change_percent = (($price['close'] - $price['open']) / $price['open']) * 100;
         $stock_daily_info->eps = $price['eps'];
+        $stock_daily_info->pe = ($price['eps'] != 0)? $price['close'] / $price['eps'] : $stock_daily_info->pe;
         $stock_daily_info->base_volume = $price['base_volume'];
         $stock_daily_info->stock_count = $price['stock_count'];
         $stock_daily_info->save();
@@ -548,6 +557,7 @@ class TseUpdater {
           if ($stock_daily_info == null) {
             $stock_daily_info = StockDailyInfo::create([
               'stock_id' => $stock->id,
+              'ind' => $stock->ind,
               'first' => $price['first'],
               'high' => $price['high'],
               'low' => $price['low'],

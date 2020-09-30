@@ -9,6 +9,7 @@ use App\Setting;
 use App\Stock;
 use App\StockDailyInfo;
 use App\StockGroup;
+use App\StockInstantInfo;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -21,73 +22,96 @@ class TseInstantUpdater {
 
 
 
-
-  //get all stocks and create new stocks in database (can run at morning)
-  public function updateInstantAllStocksInfo(){
+  public function updateInstantAllStocksPricesAndClientTypes(){
     $downloader = new TseDownloader();
+    $time = date('YmdHis');
 
-    //download stock with 3 retry
-    $stocks = $downloader->downloadAllStocksNow();
-    (count($stocks) == 0)? $stocks = $downloader->downloadAllStocksNow() : $stocks = $stocks;
-    (count($stocks) == 0)? $stocks = $downloader->downloadAllStocksNow() : $stocks = $stocks;
-    (count($stocks) == 0)? $stocks = $downloader->downloadAllStocksNow() : $stocks = $stocks;
+    $stocks = $downloader->downloadAllStocksAndRecentTradesNow();
+    (count($stocks) == 0) ? $stocks = $downloader->downloadAllStocksAndRecentTradesNow() : $stocks = $stocks;
+    (count($stocks) == 0) ? $stocks = $downloader->downloadAllStocksAndRecentTradesNow() : $stocks = $stocks;
+    (count($stocks) == 0) ? $stocks = $downloader->downloadAllStocksAndRecentTradesNow() : $stocks = $stocks;
 
-    foreach ($stocks as $stock) {
-      //find stock if exist
-      $s = Stock::where('ind', '=', $stock['ind'])->first();
-
-      if ($s != null) continue;
-
-
-      try {
-        //download stock data with 3 retry
-        $info = $downloader->downloadStockOtherDataNow($stock['ind']);
-        (count($info) == 0) ? $info = $downloader->downloadStockOtherDataNow($stock['ind']) : $info = $info;
-        (count($info) == 0) ? $info = $downloader->downloadStockOtherDataNow($stock['ind']) : $info = $info;
-        (count($info) == 0) ? $info = $downloader->downloadStockOtherDataNow($stock['ind']) : $info = $info;
+    $client_types = $downloader->downloadAllClientTypesNow();
+    (count($client_types) == 0) ? $client_types = $downloader->downloadAllClientTypesNow() : $client_types = $client_types;
+    (count($client_types) == 0) ? $client_types = $downloader->downloadAllClientTypesNow() : $client_types = $client_types;
+    (count($client_types) == 0) ? $client_types = $downloader->downloadAllClientTypesNow() : $client_types = $client_types;
 
 
-        //find or stock group--------------------------------------------------
+    $i=0;
+    foreach ($stocks as $stock){
+      $j=0;
+      foreach ($client_types as $type){
+        if ($stock['ind'] == $type['ind']){
+          try {
+            $s = Stock::where('ind', '=', $stock['ind'])->first();
+            $s_instant = StockInstantInfo::create([
+              'stock_id' => ($s != null) ? $s->id : 0,
+              'ind' => $stock['ind'],
+              'first' => $stock['first'],
+              'high' => $stock['high'],
+              'low' => $stock['low'],
+              'close' => $stock['close'],
+              'value' => $stock['value'],
+              'vol' => $stock['vol'],
+              'openint' => $stock['openint'],
+              'open' => $stock['open'],
+              'last' => $stock['last'],
+              'change_percent' => (($stock['close'] - $stock['open']) / $stock['open']) * 100,
 
-        $sg = StockGroup::where('name', 'like', '%' . $info['group_name'] . '%')->first();
+              'individual_buy_count' => $type['individual_buy_count'],
+              'corporate_buy_count' => $type['corporate_buy_count'],
+              'individual_buy_vol' => $type['individual_buy_vol'],
+              'corporate_buy_vol' => $type['corporate_buy_vol'],
+              'individual_sell_count' => $type['individual_sell_count'],
+              'corporate_sell_count' => $type['corporate_sell_count'],
+              'individual_sell_vol' => $type['individual_sell_vol'],
+              'corporate_sell_vol' => $type['corporate_sell_vol'],
 
-        if ($sg == null) {
-          $sg = StockGroup::create([
-            'code' => '',
-            'name' => $info['group_name'],
-          ]);
+              'sell_count1' => (array_key_exists('sell_count1', $stock)) ? $stock['sell_count1'] : 0,
+              'sell_vol1' => (array_key_exists('sell_vol1', $stock)) ? $stock['sell_vol1'] : 0,
+              'sell_price1' => (array_key_exists('sell_price1', $stock)) ? $stock['sell_price1'] : 0,
+              'buy_count1' => (array_key_exists('buy_count1', $stock)) ? $stock['buy_count1'] : 0,
+              'buy_vol1' => (array_key_exists('buy_vol1', $stock)) ? $stock['buy_vol1'] : 0,
+              'buy_price1' => (array_key_exists('buy_price1', $stock)) ? $stock['buy_price1'] : 0,
+
+              'sell_count2' => (array_key_exists('sell_count2', $stock)) ? $stock['sell_count2'] : 0,
+              'sell_vol2' => (array_key_exists('sell_vol2', $stock)) ? $stock['sell_vol2'] : 0,
+              'sell_price2' => (array_key_exists('sell_price2', $stock)) ? $stock['sell_price2'] : 0,
+              'buy_count2' => (array_key_exists('buy_count2', $stock)) ? $stock['buy_count2'] : 0,
+              'buy_vol2' => (array_key_exists('buy_vol2', $stock)) ? $stock['buy_vol2'] : 0,
+              'buy_price2' => (array_key_exists('buy_price2', $stock)) ? $stock['buy_price2'] : 0,
+
+              'sell_count3' => (array_key_exists('sell_count3', $stock)) ? $stock['sell_count3'] : 0,
+              'sell_vol3' => (array_key_exists('sell_vol3', $stock)) ? $stock['sell_vol3'] : 0,
+              'sell_price3' => (array_key_exists('sell_price3', $stock)) ? $stock['sell_price3'] : 0,
+              'buy_count3' => (array_key_exists('buy_count3', $stock)) ? $stock['buy_count3'] : 0,
+              'buy_vol3' => (array_key_exists('buy_vol3', $stock)) ? $stock['buy_vol3'] : 0,
+              'buy_price3' => (array_key_exists('buy_price3', $stock)) ? $stock['buy_price3'] : 0,
+
+              'eps' => $stock['eps'],
+              'pe' => (strlen($stock['close']) > 0 && $stock['eps'] > 0) ? $stock['close']/$stock['eps'] : null,
+              'base_volume' => $stock['base_volume'],
+              'stock_count' => $stock['stock_count'],
+
+              'time' => $time
+
+
+            ]);
+
+
+
+            unset($client_types[$j]);
+
+          }catch (\Exception $e){}
         }
 
-        if ($s == null) {
-          $s = Stock::create([
-            'stock_group_id' => $sg->id,
-            'ind' => $stock['ind'],
-            'code' => $stock['code'],
-            'symbol' => $stock['symbol'],
-            'name' => $stock['name'],
-          ]);
-        }
-
-
-
-      } catch (\Exception $e) {
-        echo 'catch ->' . $e;
-        Log::error('TseInstantUpdater=>updateAllStocksInfo.error=' . $e->getMessage() . '\tstock_ind=' . $stock['ind']);
+        $j++;
       }
 
-
+      $i++;
     }
 
-    $setting = Setting::get(Setting::KEY_STOCKS_NAME_UPDATE_TIME);
-    $setting->value = date('Y-m-d H:i:s');
-    $setting->save();
 
-
-  }
-
-
-
-  public function updateInstantAllStocksPrices(){
 
   }
 }

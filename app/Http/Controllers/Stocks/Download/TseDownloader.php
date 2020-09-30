@@ -17,7 +17,7 @@ class TseDownloader {
     $this->client = new Client();
   }
 
-  //get all stocks and recent trades at now
+  //get all stocks at now
   public function downloadAllStocksNow(){
     $this->url = Config::TSE_MARKET_WATCH_INIT;
 
@@ -25,8 +25,12 @@ class TseDownloader {
       $str = $this->client->get($this->url)->getBody();
 //      $str = substr($str, strpos($str, '@')+1);
 //      $str = substr($str, strpos($str, '@')+1);
-      $str = substr($str, strpos($str, 'IR')-16);
+      $data = substr($str, strpos($str, 'IR')-16);
+      $data = explode('@', $data);
+      $str = $data[0];
+      $recent_trades = $data[1];
       $str = explode(';', $str);
+
 
       $stocks = [];
       foreach ($str as $row) {
@@ -36,20 +40,165 @@ class TseDownloader {
         $i = 0;
         $stock = array();
         foreach ($items as $item) {
-          $i++;
           $item = str_replace('ي','ی', $item);
           $item = str_replace('ك','ک', $item);
           switch ($i){
-            case 1: $stock['ind'] = $item;break;
-            case 2: $stock['code'] = $item;break;
-            case 3: $stock['symbol'] = $item;break;
-            case 4: $stock['name'] = $item;break;
+            case 0: $stock['ind'] = $item;break;
+            case 1: $stock['code'] = $item;break;
+            case 2: $stock['symbol'] = $item;break;
+            case 3: $stock['name'] = $item;break;
+            case 5: $stock['first'] = $item;break;
+            case 6: $stock['close'] = $item;break;
+            case 7: $stock['last'] = $item;break;
+            case 8: $stock['openint'] = $item;break;
+            case 9: $stock['vol'] = $item;break;
+            case 10: $stock['value'] = $item;break;
+            case 11: $stock['low'] = $item;break;
+            case 12: $stock['high'] = $item;break;
+            case 13: $stock['open'] = $item;break;
+            case 14: $stock['eps'] = $item;break;
+            case 15: $stock['base_volume'] = $item;break;
+            case 18: $stock['group_code'] = $item;break;
+            case 21: $stock['stock_count'] = $item;break;
             default:break;
           }
+
+          $i++;
         }
         $stocks[] = $stock;
 
       }
+
+      return $stocks;
+
+    } catch (RequestException  $e) {
+      Log::error('GET request failed.error=' . $e->getMessage(). '\turl=' . $this->url);
+      return [];
+    }
+  }
+
+
+
+
+  //get all stocks and recent trades at now
+  public function downloadAllStocksAndRecentTradesNow(){
+
+    $this->url = Config::TSE_MARKET_WATCH_INIT;
+
+    try {
+      $str = $this->client->get($this->url)->getBody();
+
+      $data = substr($str, strpos($str, 'IR')-16);
+      $data = explode('@', $data);
+      $str = $data[0];
+      $str = explode(';', $str);
+      $recent_trades = $data[1];
+      $recent_trades = explode(';', $recent_trades);
+
+
+      $stocks = [];
+      foreach ($str as $row) {
+
+        $items = explode(',', $row);
+        $i = 0;
+        $stock = array();
+
+        foreach ($items as $item) {
+          $item = str_replace('ي','ی', $item);
+          $item = str_replace('ك','ک', $item);
+
+
+          switch ($i){
+            case 0: $stock['ind'] = $item;break;
+            case 1: $stock['code'] = $item;break;
+            case 2: $stock['symbol'] = $item;break;
+            case 3: $stock['name'] = $item;break;
+            case 5: $stock['first'] = $item;break;
+            case 6: $stock['close'] = $item;break;
+            case 7: $stock['last'] = $item;break;
+            case 8: $stock['openint'] = $item;break;
+            case 9: $stock['vol'] = $item;break;
+            case 10: $stock['value'] = $item;break;
+            case 11: $stock['low'] = $item;break;
+            case 12: $stock['high'] = $item;break;
+            case 13: $stock['open'] = $item;break;
+            case 14: (strlen($item) > 0) ? $stock['eps'] = $item : $stock['eps'] = 0 ;break;
+            case 15: $stock['base_volume'] = $item;break;
+            case 18: $stock['group_code'] = $item;break;
+            case 21: $stock['stock_count'] = $item;break;
+            default:break;
+          }
+
+          $i++;
+        }
+        $stocks[] = $stock;
+
+      }
+
+
+
+
+      $trades = [];
+      foreach ($recent_trades as $trade){
+        $items = explode(',', $trade);
+        $trades[] = $items;
+      }
+
+
+
+      $i = 0;
+      foreach ($stocks as $stock){
+        $j = 0;
+        foreach ($trades as $trade) {
+
+          if ($trade[0] == $stock['ind']) {
+            switch ($trade[1]) {
+              case 1:
+                $stock['sell_count1'] = (strlen($trade[2]) > 0) ? $trade[2] : 0;
+                $stock['sell_vol1'] = (strlen($trade[7]) > 0) ? $trade[7] : 0;
+                $stock['sell_price1'] = (strlen($trade[5]) > 0) ? $trade[5] : 0;
+                $stock['buy_count1'] = (strlen($trade[3]) > 0) ? $trade[3] : 0;
+                $stock['buy_vol1'] = (strlen($trade[6]) > 0) ? $trade[6] : 0;
+                $stock['buy_price1'] = (strlen($trade[4]) > 0) ? $trade[4] : 0;
+                break;
+
+              case 2:
+                $stock['sell_count2'] = (strlen($trade[2]) > 0) ? $trade[2] : 0;
+                $stock['sell_vol2'] = (strlen($trade[7]) > 0) ? $trade[7] : 0;
+                $stock['sell_price2'] = (strlen($trade[5]) > 0) ? $trade[5] : 0;
+                $stock['buy_count2'] = (strlen($trade[3]) > 0) ? $trade[3] : 0;
+                $stock['buy_vol2'] = (strlen($trade[6]) > 0) ? $trade[6] : 0;
+                $stock['buy_price2'] = (strlen($trade[4]) > 0) ? $trade[4] : 0;
+                break;
+
+              case 3:
+                $stock['sell_count3'] = (strlen($trade[2]) > 0) ? $trade[2] : 0;
+                $stock['sell_vol3'] = (strlen($trade[7]) > 0) ? $trade[7] : 0;
+                $stock['sell_price3'] = (strlen($trade[5]) > 0) ? $trade[5] : 0;
+                $stock['buy_count3'] = (strlen($trade[3]) > 0) ? $trade[3] : 0;
+                $stock['buy_vol3'] = (strlen($trade[6]) > 0) ? $trade[6] : 0;
+                $stock['buy_price3'] = (strlen($trade[4]) > 0) ? $trade[4] : 0;
+                break;
+
+              default:
+                break;
+
+            }
+
+            unset($trades[$j]);
+
+            $stocks[$i] = $stock;
+          }
+
+
+          $j++;
+        }
+
+        $i++;
+      }
+
+
+
 
       return $stocks;
 
