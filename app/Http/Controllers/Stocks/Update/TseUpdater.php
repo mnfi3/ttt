@@ -544,6 +544,35 @@ class TseUpdater {
 
     foreach ($stocks as $stock) {
 
+      //update stock info-------------------------------------------------------------------
+      try{
+
+        $info = $downloader->downloadStockOtherDataNow($stock->ind);
+        (count($info) == 0) ? $info = $downloader->downloadStockOtherDataNow($stock->ind) : $info = $info;
+        (count($info) == 0) ? $info = $downloader->downloadStockOtherDataNow($stock->ind) : $info = $info;
+        (count($info) == 0) ? $info = $downloader->downloadStockOtherDataNow($stock->ind) : $info = $info;
+
+
+        $sg = StockGroup::where('name', 'like', '%' . $info['group_name'] . '%')->first();
+        $smt = StockMarketType::where('name', 'like', '%' . $info['market_type'] . '%')->first();
+        (is_null($smt))? $smt_id = null : $smt_id = $smt->id;
+
+        if ($sg == null) {
+          $sg = StockGroup::create([
+            'code' => '',
+            'name' => $info['group_name'],
+          ]);
+        }
+
+        $stock->stock_group_id = $sg->id;
+        $stock->stock_market_type_id = $smt_id;
+        $stock->code = $stock['code'];
+        $stock->symbol = $stock['symbol'];
+        $stock->name = $stock['name'];
+        $stock->save();
+      }catch (\Exception $e){}
+
+
       //download price history------------------------------------------
       try {
 
@@ -639,7 +668,30 @@ class TseUpdater {
             $stock_daily_info->api_corporate_buy_value = $record['api_corporate_buy_value'];
             $stock_daily_info->api_individual_sell_value = $record['api_individual_sell_value'];
             $stock_daily_info->api_corporate_sell_value = $record['api_corporate_sell_value'];
+
+
+
+            if ($stock_daily_info->individual_buy_count == null){
+              $stock_daily_info->individual_buy_count = $record['api_individual_buy_count'];
+              $stock_daily_info->corporate_buy_count = $record['api_corporate_buy_count'];
+              $stock_daily_info->individual_sell_count = $record['api_individual_sell_count'];
+              $stock_daily_info->corporate_sell_count = $record['api_corporate_sell_count'];
+              $stock_daily_info->individual_buy_vol = $record['api_individual_buy_vol'];
+              $stock_daily_info->corporate_buy_vol = $record['api_corporate_buy_vol'];
+              $stock_daily_info->individual_sell_vol = $record['api_individual_sell_vol'];
+              $stock_daily_info->corporate_sell_vol = $record['api_corporate_sell_vol'];
+              $stock_daily_info->individual_buy_value = $record['api_individual_buy_value'];
+              $stock_daily_info->corporate_buy_value = $record['api_corporate_buy_value'];
+              $stock_daily_info->individual_sell_value = $record['api_individual_sell_value'];
+              $stock_daily_info->corporate_sell_value = $record['api_corporate_sell_value'];
+            }
+
+
             $stock_daily_info->save();
+
+
+
+
           }
         }
       }catch (\Exception $e){

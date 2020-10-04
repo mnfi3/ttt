@@ -111,6 +111,7 @@ class TseDailyUpdater {
 
       //stock exist in database and just update other data
       if ($s != null) {
+
         //create stock other data
         $stock_daily_info = StockDailyInfo::where('stock_id', '=', $s->id)->where('date', '=', Util::getTradeDate())->first();
         //create stock other
@@ -154,6 +155,28 @@ class TseDailyUpdater {
           $stock_daily_info->save();
 
         }
+
+        //update stock
+
+        $sg = StockGroup::where('name', 'like', '%' . $info['group_name'] . '%')->first();
+        $smt = StockMarketType::where('name', 'like', '%' . $info['market_type'] . '%')->first();
+        (is_null($smt))? $smt_id = null : $smt_id = $smt->id;
+
+        if ($sg == null) {
+          $sg = StockGroup::create([
+            'code' => '',
+            'name' => $info['group_name'],
+          ]);
+        }
+
+        $s->stock_group_id = $sg->id;
+        $s->stock_market_type_id = $smt_id;
+        $s->code = $stock['code'];
+        $s->symbol = $stock['symbol'];
+        $s->name = $stock['name'];
+        $s->save();
+
+
         $setting = Setting::get(Setting::KEY_STOCKS_NAME_LAST_UPDATE_ID);
         $setting->value = $s->id;
         $setting->save();

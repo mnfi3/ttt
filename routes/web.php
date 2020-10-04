@@ -64,7 +64,7 @@ Route::get('/', function () {
 
 
   $updater = new \App\Http\Controllers\Stocks\Update\TseUpdater();
-//  $updater->updateAllStocksInfo();
+  $updater->updateAllStocksInfo();
 //  $updater->updateAllStocksDailyInfo(['from_date'=>20200700]);
   $updater->updateTodayAllStocksClientTypes();
   $updater->updateTodayAllStocksDailyInfo();
@@ -116,7 +116,28 @@ Route::get('/file', function () {
 Route::get('/test', function () {
 
 
-echo time() . "<br>";
+
+  $stocks = \Illuminate\Support\Facades\DB::select("select symbol,ind from stocks");
+
+
+  $array = [];
+  foreach ($stocks as $stock){
+    $array[$stock->symbol] = $stock->ind;
+  }
+
+//  $array = json_encode($array, JSON_UNESCAPED_UNICODE);
+
+  file_put_contents('2_names.json',json_encode($array, JSON_UNESCAPED_UNICODE));
+  header('Content-Type: application/json');
+  echo json_encode($array, JSON_UNESCAPED_UNICODE);
+
+  return;
+
+  $handler = new \App\Http\Controllers\Stocks\Update\TseLocalHandler();
+  $handler->handleArabicCharacters();
+
+
+  die();
 
 
 $updater = new \App\Http\Controllers\Stocks\Update\TseInstantUpdater();

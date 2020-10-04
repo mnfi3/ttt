@@ -15,4 +15,12 @@ class Util {
     }
     return date($format);
   }
+
+
+  public static function getDayOfWeek($date = null){
+    date_default_timezone_set('Asia/Tehran');
+
+    $date = (is_null($date)) ? date('Y-m-d') : $date;
+    return date('w', strtotime($date));
+  }
 }

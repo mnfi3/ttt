@@ -16,7 +16,7 @@ class TseLocalHandler {
 
 
 
-  //===================handle stocks types==========================
+
   public function handleArabicCharacters(){
     $stocks = Stock::all();
     foreach ($stocks as $stock){
@@ -42,6 +42,8 @@ class TseLocalHandler {
     }
   }
 
+
+  //===================handle stocks types==========================
 
   public function handlePriority(){
     $stocks = Stock::where('stock_type_id', '=', null)->where('symbol', 'like', '%'.'ح')->where('name', 'like', 'ح'.'%')->get();
@@ -115,18 +117,19 @@ class TseLocalHandler {
     }
   }
 
+  //===================handle stocks types==========================
+
 
   public function handleLastDayActiveStocks(){
     DB::update("update stocks set is_active = 0");
   }
 
 
-  public function handleLastDayInstantData(){
-    //remove all last day data
+  public function handleLastDayInstantInfo(){
+    DB::table("stock_instant_infos")->truncate();
   }
 
 
 
-  //===================handle stocks types==========================
 
 }

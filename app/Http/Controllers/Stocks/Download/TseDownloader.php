@@ -71,7 +71,7 @@ class TseDownloader {
 
       return $stocks;
 
-    } catch (RequestException  $e) {
+    } catch (\Exception  $e) {
       Log::error('GET request failed.error=' . $e->getMessage(). '\turl=' . $this->url);
       return [];
     }
@@ -202,7 +202,7 @@ class TseDownloader {
 
       return $stocks;
 
-    } catch (RequestException  $e) {
+    } catch (\Exception  $e) {
       Log::error('GET request failed.error=' . $e->getMessage(). '\turl=' . $this->url);
       return [];
     }
@@ -250,7 +250,7 @@ class TseDownloader {
 
       return $prices;
 
-    } catch (RequestException  $e) {
+    } catch (\Exception  $e) {
       Log::error('GET request failed.error=' . $e->getMessage(). '\turl=' . $this->url);
       return [];
     }
@@ -293,7 +293,7 @@ class TseDownloader {
 
       return $records;
 
-    } catch (RequestException  $e) {
+    } catch (\Exception  $e) {
       Log::error('GET request failed.error=' . $e->getMessage(). '\turl=' . $this->url);
       return [];
     }
@@ -338,7 +338,7 @@ class TseDownloader {
 
       return $records;
 
-    } catch (RequestException  $e) {
+    } catch (\Exception  $e) {
       Log::error('GET request failed.error=' . $e->getMessage(). '\turl=' . $this->url);
       return [];
     }
@@ -482,7 +482,7 @@ class TseDownloader {
 
       return $data2;
 
-    } catch (RequestException  $e) {
+    } catch (\Exception  $e) {
       Log::error('GET request failed.error=' . $e->getMessage(). '\turl=' . $this->url);
       return [];
     }
@@ -555,7 +555,7 @@ class TseDownloader {
 
       return $records;
 
-    } catch (RequestException  $e) {
+    } catch (\Exception  $e) {
       Log::error('GET request failed.error=' . $e->getMessage(). '\turl=' . $this->url);
       return [];
     }

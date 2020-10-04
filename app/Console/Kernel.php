@@ -25,6 +25,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+         $schedule->command('tse:update-stocks-at-morning')->dailyAt('08:15')->timezone('Asia/Tehran');
+         $schedule->command('tse:update-stocks-at-noon')->dailyAt('14:15')->timezone('Asia/Tehran');
+         $schedule->command('tse:update-stocks-at-night')->dailyAt('02:00')->timezone('Asia/Tehran');
+         $schedule->command('tse:update-stocks-every-minutes')->everyMinute();
     }
 
     /**
