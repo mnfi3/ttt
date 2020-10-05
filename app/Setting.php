@@ -34,4 +34,7 @@ class Setting extends Model
   //stock today client types
   const KEY_STOCK_TODAY_CLIENT_TYPES_UPDATE_LAST_ID = 'stock-today-client-types-update-last-id';
   const KEY_STOCK_TODAY_CLIENT_TYPES_UPDATE_TIME = 'stock-today-client-types-update-time';
+
+
+  const KEY_TEST_CRON = 'test-cron';
 }

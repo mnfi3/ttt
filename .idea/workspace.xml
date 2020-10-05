@@ -3,14 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ad3ba223-d883-4a44-83e5-2c8b2461fbb2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/TseUpdateStocksAtNight.php" afterPath="$PROJECT_DIR$/app/Console/Commands/TseUpdateStocksAtNight.php" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/TseUpdateStocksAtNoon.php" afterPath="$PROJECT_DIR$/app/Console/Commands/TseUpdateStocksAtNoon.php" />
       <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Stocks/Download/TseDownloader.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Stocks/Download/TseDownloader.php" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseDailyUpdater.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseDailyUpdater.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseInstantUpdater.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseInstantUpdater.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseLocalHandler.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseLocalHandler.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseUpdater.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseUpdater.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Util/Util.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Util/Util.php" />
-      <change beforePath="$PROJECT_DIR$/public/stocks.aspx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Setting.php" afterPath="$PROJECT_DIR$/app/Setting.php" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_21_195846_add_code_to_stocks_table.php" afterPath="$PROJECT_DIR$/database/migrations/2020_09_21_195846_add_code_to_stocks_table.php" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,46 +26,44 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="129" column="33" lean-forward="false" selection-start-line="129" selection-start-column="33" selection-end-line="129" selection-end-column="33" />
+            <state relative-caret-position="570">
+              <caret line="97" column="41" lean-forward="false" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="41" />
               <folding>
-                <element signature="e#484#1699#1#PHP" expanded="true" />
-                <element signature="e#1726#2626#1#PHP" expanded="true" />
-                <marker date="1601843985356" expanded="true" signature="1203:1281" ph="..." />
-                <marker date="1601843985356" expanded="true" signature="2722:2751" ph="select symbo... stocks" />
+                <element signature="e#484#770#1#PHP" expanded="true" />
+                <element signature="e#797#1697#1#PHP" expanded="true" />
+                <marker date="1601911815059" expanded="true" signature="1795:1824" ph="select symbo... stocks" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TseDailyUpdater.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseDailyUpdater.php">
+      <file leaf-file-name="TestCommand.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Console/Commands/TestCommand.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="176" column="19" lean-forward="true" selection-start-line="160" selection-start-column="8" selection-end-line="176" selection-end-column="19" />
+            <state relative-caret-position="70">
+              <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="37" />
+              <folding>
+                <element signature="e#640#801#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Setting.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Setting.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="448">
+              <caret line="38" column="34" lean-forward="false" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TseDownloader.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Stocks/Download/TseDownloader.php">
+      <file leaf-file-name="Kernel.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Console/Kernel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="571" column="48" lean-forward="true" selection-start-line="571" selection-start-column="48" selection-end-line="571" selection-end-column="48" />
-              <folding>
-                <element signature="e#293#362#0#PHP" expanded="true" />
-                <element signature="e#17613#18986#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TseUpdater.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseUpdater.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="676" column="53" lean-forward="true" selection-start-line="676" selection-start-column="53" selection-end-line="676" selection-end-column="53" />
+            <state relative-caret-position="465">
+              <caret line="29" column="25" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -76,11 +72,69 @@
       <file leaf-file-name="Util.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Util/Util.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="10" column="22" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="10" selection-end-column="22" />
+            <state relative-caret-position="189">
+              <caret line="9" column="45" lean-forward="false" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TseLocalHandler.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseLocalHandler.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="612">
+              <caret line="128" column="49" lean-forward="true" selection-start-line="128" selection-start-column="49" selection-end-line="128" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2019_08_19_000000_create_failed_jobs_table.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="19" column="37" lean-forward="false" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="37" />
               <folding>
-                <element signature="e#310#505#0#PHP" expanded="true" />
+                <element signature="n#down#0;n#CreateFailedJobsTable#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2020_09_21_195846_add_code_to_stocks_table.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2020_09_21_195846_add_code_to_stocks_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="19" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+              <folding>
+                <element signature="n#up#0;n#AddCodeToStocksTable#0;n#!!top" expanded="true" />
+                <element signature="e#315#416#1#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TseDailyUpdater.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseDailyUpdater.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="383" column="88" lean-forward="false" selection-start-line="383" selection-start-column="88" selection-end-line="383" selection-end-column="88" />
+              <folding>
+                <element signature="e#385#3100#0#PHP" expanded="true" />
+                <element signature="e#3142#8668#0#PHP" expanded="true" />
+                <element signature="e#8705#11387#0#PHP" expanded="true" />
+                <element signature="e#11430#13912#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TseUpdateStocksAtNight.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Console/Commands/TseUpdateStocksAtNight.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="612">
+              <caret line="55" column="44" lean-forward="false" selection-start-line="55" selection-start-column="44" selection-end-line="55" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -115,19 +169,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2020_09_20_134422_create_stock_groups_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" />
         <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Stocks/Download/TseApi.php" />
         <option value="$PROJECT_DIR$/public/data.txt" />
         <option value="$PROJECT_DIR$/public/a.txt" />
-        <option value="$PROJECT_DIR$/database/migrations/2020_09_21_195846_add_code_to_stocks_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_09_21_201943_add_some_fiels_to_stock_daily_infos_table.php" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Util/helper.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_09_22_200128_create_settings_table.php" />
-        <option value="$PROJECT_DIR$/app/Setting.php" />
         <option value="$PROJECT_DIR$/app/StockGroup.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_09_20_134530_create_stocks_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_09_20_142837_create_stock_daily_infos_table.php" />
@@ -158,14 +209,17 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseLocalHandler.php" />
         <option value="$PROJECT_DIR$/app/Console/Commands/TseUpdateStocksAtMorning.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Stocks/Download/TseDownloader.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseDailyUpdater.php" />
         <option value="$PROJECT_DIR$/public/tickers_data/1_names.json" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseUpdater.php" />
-        <option value="$PROJECT_DIR$/app/Console/Kernel.php" />
+        <option value="$PROJECT_DIR$/app/Console/Commands/TseUpdateStocksEveryMinutes.php" />
         <option value="$PROJECT_DIR$/app/Console/Commands/TseUpdateStocksAtNight.php" />
         <option value="$PROJECT_DIR$/app/Console/Commands/TseUpdateStocksAtNoon.php" />
-        <option value="$PROJECT_DIR$/app/Console/Commands/TseUpdateStocksEveryMinutes.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseDailyUpdater.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Setting.php" />
+        <option value="$PROJECT_DIR$/app/Console/Commands/TestCommand.php" />
+        <option value="$PROJECT_DIR$/app/Console/Kernel.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2020_09_21_195846_add_code_to_stocks_table.php" />
       </list>
     </option>
   </component>
@@ -312,7 +366,7 @@
       <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1318" />
@@ -334,7 +388,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -408,6 +461,22 @@
             <path>
               <item name="tse" type="b2602c69:ProjectViewProjectNode" />
               <item name="tse" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="tse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tse" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="database" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="tse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tse" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="database" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="migrations" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="tse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tse" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -424,6 +493,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -529,25 +599,26 @@
       <workItem from="1601554065855" duration="649000" />
       <workItem from="1601743777587" duration="598000" />
       <workItem from="1601751820833" duration="21000" />
-      <workItem from="1601832308153" duration="12816000" />
+      <workItem from="1601832308153" duration="12947000" />
+      <workItem from="1601909798780" duration="4678000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="168344000" />
+    <option name="totallyTimeSpent" value="173153000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32814178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3329753" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40652174" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -574,21 +645,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Util/helper.php" />
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1470">
-          <caret line="70" column="30" lean-forward="true" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2020_09_22_200128_create_settings_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -607,13 +663,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="18" column="32" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Setting.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="35" column="88" lean-forward="false" selection-start-line="35" selection-start-column="88" selection-end-line="35" selection-end-column="88" />
         </state>
       </provider>
     </entry>
@@ -657,13 +706,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="423">
           <caret line="24" column="50" lean-forward="true" selection-start-line="22" selection-start-column="12" selection-end-line="24" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_09_21_195846_add_code_to_stocks_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="16" column="62" lean-forward="false" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
         </state>
       </provider>
     </entry>
@@ -785,7 +827,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -793,7 +834,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-375">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -815,21 +855,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseLocalHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="129" column="3" lean-forward="true" selection-start-line="129" selection-start-column="3" selection-end-line="129" selection-end-column="3" />
-          <folding>
-            <element signature="e#3583#3680#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Stocks/Download/Config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="11" column="87" lean-forward="false" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="87" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -837,20 +866,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" column="30" lean-forward="true" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="129" column="33" lean-forward="false" selection-start-line="129" selection-start-column="33" selection-end-line="129" selection-end-column="33" />
-          <folding>
-            <element signature="e#484#1699#1#PHP" expanded="true" />
-            <element signature="e#1726#2626#1#PHP" expanded="true" />
-            <marker date="1601843985356" expanded="true" signature="1203:1281" ph="..." />
-            <marker date="1601843985356" expanded="true" signature="2722:2751" ph="select symbo... stocks" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -858,84 +873,155 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="0" column="12892" lean-forward="false" selection-start-line="0" selection-start-column="12892" selection-end-line="0" selection-end-column="12892" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Stocks/Download/TseDownloader.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="571" column="48" lean-forward="true" selection-start-line="571" selection-start-column="48" selection-end-line="571" selection-end-column="48" />
+        <state relative-caret-position="1281">
+          <caret line="571" column="48" lean-forward="false" selection-start-line="571" selection-start-column="48" selection-end-line="571" selection-end-column="48" />
           <folding>
-            <element signature="e#293#362#0#PHP" expanded="true" />
-            <element signature="e#17613#18986#0#PHP" expanded="true" />
+            <element signature="e#293#362#0#PHP" expanded="false" />
+            <element signature="e#17613#18986#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseDailyUpdater.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseUpdater.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="176" column="19" lean-forward="true" selection-start-line="160" selection-start-column="8" selection-end-line="176" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Util/Util.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="22" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="10" selection-end-column="22" />
-          <folding>
-            <element signature="e#310#505#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Console/Kernel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="30" column="44" lean-forward="true" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Console/Commands/TseUpdateStocksAtMorning.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Console/Commands/TseUpdateStocksAtNight.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="41" column="41" lean-forward="true" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
+        <state relative-caret-position="4095">
+          <caret line="676" column="53" lean-forward="false" selection-start-line="676" selection-start-column="53" selection-end-line="676" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Console/Commands/TseUpdateStocksAtNoon.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="43" column="40" lean-forward="true" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
+        <state relative-caret-position="591">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Console/Commands/TseUpdateStocksEveryMinutes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="44" column="42" lean-forward="false" selection-start-line="44" selection-start-column="42" selection-end-line="44" selection-end-column="42" />
+        <state relative-caret-position="507">
+          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseUpdater.php">
+    <entry file="file://$PROJECT_DIR$/config/app.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="676" column="53" lean-forward="true" selection-start-line="676" selection-start-column="53" selection-end-line="676" selection-end-column="53" />
+        <state relative-caret-position="1470">
+          <caret line="70" column="30" lean-forward="true" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Console/Commands/TseUpdateStocksAtMorning.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="16" column="56" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="56" />
+          <folding>
+            <element signature="e#820#1337#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="97" column="41" lean-forward="false" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="41" />
+          <folding>
+            <element signature="e#484#770#1#PHP" expanded="true" />
+            <element signature="e#797#1697#1#PHP" expanded="true" />
+            <marker date="1601911815059" expanded="true" signature="1795:1824" ph="select symbo... stocks" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Setting.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="38" column="34" lean-forward="false" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Console/Commands/TestCommand.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="37" />
+          <folding>
+            <element signature="e#640#801#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Console/Kernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="29" column="25" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Console/Commands/TseUpdateStocksAtNight.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="55" column="44" lean-forward="false" selection-start-line="55" selection-start-column="44" selection-end-line="55" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseDailyUpdater.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="383" column="88" lean-forward="false" selection-start-line="383" selection-start-column="88" selection-end-line="383" selection-end-column="88" />
+          <folding>
+            <element signature="e#385#3100#0#PHP" expanded="true" />
+            <element signature="e#3142#8668#0#PHP" expanded="true" />
+            <element signature="e#8705#11387#0#PHP" expanded="true" />
+            <element signature="e#11430#13912#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Util/Util.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="45" lean-forward="false" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Stocks/Update/TseLocalHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="128" column="49" lean-forward="true" selection-start-line="128" selection-start-column="49" selection-end-line="128" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="19" column="37" lean-forward="false" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="37" />
+          <folding>
+            <element signature="n#down#0;n#CreateFailedJobsTable#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2020_09_21_195846_add_code_to_stocks_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding>
+            <element signature="n#up#0;n#AddCodeToStocksTable#0;n#!!top" expanded="true" />
+            <element signature="e#315#416#1#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

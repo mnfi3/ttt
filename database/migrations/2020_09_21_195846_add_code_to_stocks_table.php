@@ -14,7 +14,7 @@ class AddCodeToStocksTable extends Migration
     public function up()
     {
         Schema::table('stocks', function (Blueprint $table) {
-            $table->string('code')->after('index')->nullable();
+            $table->string('code')->after('ind')->nullable();
         });
     }
 

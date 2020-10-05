@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Http\Controllers\Stocks\Update\TseDailyUpdater;
+use App\Http\Controllers\Stocks\Update\TseLocalHandler;
 use App\Http\Controllers\Util\Util;
 use Illuminate\Console\Command;
 
@@ -41,8 +42,15 @@ class TseUpdateStocksAtNight extends Command
     {
       if (Util::getDayOfWeek() != 4 && Util::getDayOfWeek() != 5){
         $updater = new TseDailyUpdater();
+        $handler = new TseLocalHandler();
 
         $updater->updateStocksInfoAfterMarket();
+
+        $handler->handleArabicCharacters();
+        $handler->handlePriority();
+        $handler->handleSellOption();
+        $handler->handleBuyOption();
+
         $updater->updateStocksPricesAfterMarket();
         $updater->updateStocksClientTypesAfterMarket();
         $updater->updateStocksClientTypesFromApi();

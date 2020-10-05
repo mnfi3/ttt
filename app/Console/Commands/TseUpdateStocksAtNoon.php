@@ -46,6 +46,12 @@ class TseUpdateStocksAtNoon extends Command
         $handler = new TseLocalHandler();
 
         $updater->updateStocksInfoAfterMarket();
+
+        $handler->handleArabicCharacters();
+        $handler->handlePriority();
+        $handler->handleSellOption();
+        $handler->handleBuyOption();
+
         $updater->updateStocksPricesAfterMarket();
         $updater->updateStocksClientTypesAfterMarket();
       }

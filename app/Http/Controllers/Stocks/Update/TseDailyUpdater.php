@@ -32,7 +32,7 @@ class TseDailyUpdater {
       //find stock if exist
       $s = Stock::where('ind', '=', $stock['ind'])->first();
 
-      if ($s == null) {
+
         try {
           //download stock data with 3 retry
           $info = $downloader->downloadStockOtherDataNow($stock['ind']);
@@ -54,16 +54,29 @@ class TseDailyUpdater {
             ]);
           }
 
+          if ($s == null) {
 
-          $s = Stock::create([
-            'stock_group_id' => $sg->id,
-            'stock_market_type_id' => $smt_id,
-            'ind' => $stock['ind'],
-            'code' => $stock['code'],
-            'symbol' => $stock['symbol'],
-            'name' => $stock['name'],
-            'is_active' => 1,
-          ]);
+            $s = Stock::create([
+              'stock_group_id' => $sg->id,
+              'stock_market_type_id' => $smt_id,
+              'ind' => $stock['ind'],
+              'code' => $stock['code'],
+              'symbol' => $stock['symbol'],
+              'name' => $stock['name'],
+              'is_active' => 1,
+            ]);
+
+
+          }else{
+            $s->stock_group_id = $sg->id;
+            $s->stock_market_type_id = $smt_id;
+            $s->code = $stock['code'];
+            $s->symbol = $stock['symbol'];
+            $s->name = $stock['name'];
+            $s->is_active = 1;
+            $s->save();
+          }
+
 
           $setting = Setting::get(Setting::KEY_STOCKS_NAME_LAST_UPDATE_ID);
           $setting->value = $s->id;
@@ -75,10 +88,6 @@ class TseDailyUpdater {
           Log::error('updateStocksInfoBeforeMarket.error=' . $e->getMessage() . '\tstock_ind=' . $stock['ind']);
         }
 
-      }else{
-        $s->is_active = 1;
-        $s->save();
-      }
 
 
     }
@@ -372,7 +381,7 @@ class TseDailyUpdater {
         (count($records) == 0) ? $records = $downloader->downloadStockClientTypeHistory($stock->ind) : $records = $records;
 
         foreach ($records as $record) {
-          if ($record['date'] != Util::getTradeDate()) continue;
+          if ($record['date'] != Util::getTradeDate() && $record['date'] != (Util::getTradeDate() - 1)) continue;
           $stock_daily_info = StockDailyInfo::where('stock_id', '=', $stock->id)->where('date', '=', $record['date'])->first();
           if ($stock_daily_info == null) {
             $stock_daily_info = StockDailyInfo::create([
