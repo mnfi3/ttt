@@ -18,6 +18,7 @@ use Spatie\Browsershot\Browsershot;
 
 Route::get('/', function () {
 
+
 //  $updater = new \App\Http\Controllers\Stocks\Update\TseUpdater();
 //  $updater->updateAllStocksInfo();
 ////  $updater->updateAllStocksDailyInfo(['from_date'=>20200700]);

@@ -42,7 +42,7 @@ class TseUpdateStocksEveryMinutes extends Command
 
       date_default_timezone_set('Asia/Tehran');
       $hour = date('H');
-      if (Util::getDayOfWeek() != 4 && Util::getDayOfWeek() != 5 && $hour > 9 && $hour < 13){
+      if (Util::getDayOfWeek() != 4 && Util::getDayOfWeek() != 5 && $hour >= 9 && $hour < 13){
         $updater = new TseInstantUpdater();
 
         $updater->updateInstantAllStocksPricesAndClientTypes();
